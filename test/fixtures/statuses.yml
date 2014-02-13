@@ -3,10 +3,11 @@
 one:
   content: MyText
   user: rex
+
 two:
   content: MyText
   user: rex
 
 three:
-  content: "Hi, I'm Jim"
+  content: My status
   user: jim
