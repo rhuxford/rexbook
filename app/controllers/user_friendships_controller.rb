@@ -3,7 +3,8 @@ class UserFriendshipsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @user_friendships = current_user.user_friendships.includes(:friend).all
+    @user_friendships = current_user.user_friendships.all
+    respond_with @user_friendships
   end
 
   def new
@@ -19,8 +20,8 @@ class UserFriendshipsController < ApplicationController
   end
 
   def edit
-    @user_friendship = current_user.user_friendships.find(params[:id]).decorate
-    @friend = @user_friendship.friend
+    @friend = User.where(profile_name: params[:id]).first
+    @user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate
   end
 
   def accept

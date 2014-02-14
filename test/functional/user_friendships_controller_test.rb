@@ -162,7 +162,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       setup do
         @user_friendship = create(:pending_user_friendship, user: users(:rex))
         sign_in users(:rex)
-        get :edit, id: @user_friendship
+        get :edit, id: @user_friendship.friend.profile_name
       end
 
       should "assign a user friendship" do
